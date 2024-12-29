@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/gamemarket?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: wang
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Shanghai
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.advancedjavawork.entity
+  global-config:
+    db-config:
+      logic-delete-field: deleted
