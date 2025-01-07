@@ -20,6 +20,7 @@
         <mysql.version>8.0.30</mysql.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
+        <swagger.version>3.0.0</swagger.version>
     </properties>
     <dependencies>
         <dependency>
@@ -82,35 +83,21 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${mybatis-plus-generator.version}</version>
         </dependency>
+
+        <!--freemaker 模板-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>
