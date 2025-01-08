@@ -26,7 +26,7 @@ public class BookController {
 
     @GetMapping("/bookList")
     public Result bookList(BookVo vo){
-
+        if (vo.getPageNum() == null || vo.getPageSize() == null) return Result.fail();
         Page<Book> page = bookService.getBookList(vo);
         return Result.success(page);
     }
