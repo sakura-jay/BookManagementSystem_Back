@@ -18,4 +18,6 @@ public interface IUserService extends IService<User> {
     Integer login(User use);
 
     void setOnlineStatus(String userName,int status);
+
+    boolean setUserStatus(int userId);
 }

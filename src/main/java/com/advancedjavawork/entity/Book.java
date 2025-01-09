@@ -1,5 +1,6 @@
 package com.advancedjavawork.entity;
 
+import cn.hutool.core.annotation.Alias;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -30,15 +31,16 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "book_id", type = IdType.AUTO)
+    @Alias("图书ID")
     private Integer bookId;
-
+    @Alias("图书标题")
     private String bookTitle;
-
+    @Alias("图书作者")
     private String bookAuthor;
-
+    @Alias("图书库存")
     private Integer bookNumber;
-
+    @Alias("出版时间")
     private LocalDate publishTime;
-
+    @Alias("出版社")
     private String bookPress;
 }

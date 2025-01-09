@@ -47,9 +47,19 @@ public class UserController {
         return Result.success();
     }
 
+    @PostMapping("/banned")
+    public Result setUserStatus(Integer userId){
+        if (userId == null) return Result.fail();
+        boolean result = userService.setUserStatus(userId);
+        if (!result) return Result.fail();
+        return Result.success();
+    }
+
     public void setUserOnlineStatus(String userName,int status){
         if (userName!=null){
             userService.setOnlineStatus(userName,status);
         }
     }
+
+
 }
