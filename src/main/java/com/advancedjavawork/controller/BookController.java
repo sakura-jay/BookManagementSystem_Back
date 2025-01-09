@@ -30,4 +30,6 @@ public class BookController {
         Page<Book> page = bookService.getBookList(vo);
         return Result.success(page);
     }
+
+    
 }

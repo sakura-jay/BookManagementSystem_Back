@@ -36,4 +36,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (result == null) return 0;
         else return 1;
     }
+
+    @Override
+    public void setOnlineStatus(String userName,int status) {
+        UpdateWrapper<User> wrapper = new UpdateWrapper<>();
+        wrapper.eq("user_name",userName);
+        wrapper.set("online_status",status);
+        mapper.update(wrapper);
+    }
 }

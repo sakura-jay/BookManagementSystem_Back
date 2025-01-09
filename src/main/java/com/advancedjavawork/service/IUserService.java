@@ -16,4 +16,6 @@ public interface IUserService extends IService<User> {
     Integer addUser(User user);
 
     Integer login(User use);
+
+    void setOnlineStatus(String userName,int status);
 }
