@@ -21,12 +21,10 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Resource
     private AdminMapper mapper;
     @Override
-    public int login(Admin admin) {
+    public Admin login(Admin admin) {
         QueryWrapper<Admin> wrapper = new QueryWrapper<>();
         wrapper.eq("admin_name",admin.getAdminName());
         wrapper.eq("admin_password",admin.getAdminPassword());
-        Admin result = mapper.selectOne(wrapper);
-        if (result == null) return 0;
-        return 1;
+        return mapper.selectOne(wrapper);
     }
 }

@@ -1,6 +1,7 @@
 package com.advancedjavawork.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -33,4 +34,7 @@ public class Admin implements Serializable {
     private String adminName;
 
     private String adminPassword;
+
+    @TableField(exist = false)
+    private String token;
 }

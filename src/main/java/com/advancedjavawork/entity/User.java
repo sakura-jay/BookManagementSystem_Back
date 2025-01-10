@@ -1,9 +1,12 @@
 package com.advancedjavawork.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -39,4 +42,13 @@ public class User implements Serializable {
 
     @ApiModelProperty("在线状态 1在线 0离线")
     private Integer onlineStatus;
+
+    @ApiModelProperty("注册时间 ")
+    private LocalDate createTime;
+
+    @ApiModelProperty("手机号 ")
+    private String phone;
+
+    @TableField(exist = false)
+    private String token;
 }

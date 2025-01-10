@@ -2,11 +2,15 @@ package com.advancedjavawork.controller;
 
 import com.advancedjavawork.entity.Admin;
 import com.advancedjavawork.service.IAdminService;
+import com.advancedjavawork.utils.JWTUtils;
 import com.advancedjavawork.utils.Result;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -25,8 +29,14 @@ public class AdminController {
     @PostMapping("/login")
     public Result login(Admin admin){
         if (admin.getAdminName() == null || admin.getAdminPassword() == null) return Result.fail();
-        int result = adminService.login(admin);
-        if (result == 0) Result.fail();
-        return Result.success();
+        Admin result = adminService.login(admin);
+        if (result == null) Result.fail();
+        Map<String,String> map =new HashMap<>();
+        map.put("adminName",admin.getAdminName());
+        map.put("adminPassword",admin.getAdminPassword());
+        String token = JWTUtils.getToken(map);
+        result.setToken(token);
+        result.setAdminPassword(null);
+        return Result.success(result);
     }
 }

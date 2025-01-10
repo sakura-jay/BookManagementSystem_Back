@@ -32,16 +32,16 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
     public Page<Book> getBookList(BookVo vo) {
         Page<Book> page = new Page<>(vo.getPageNum(),vo.getPageSize());
         QueryWrapper<Book> wrapper = new QueryWrapper<>();
-        if (vo.getBookTitle()!=null){
+        if (vo.getBookTitle()!=null&&!"".equals(vo.getBookTitle())){
             wrapper.like("book_title",vo.getBookTitle());
         }
-        if (vo.getBookAuthor()!=null){
+        if (vo.getBookAuthor()!=null&&"".equals(vo.getBookAuthor())){
             wrapper.like("book_author",vo.getBookAuthor());
         }
-        if (vo.getBookPress()!=null){
+        if (vo.getBookPress()!=null&&!"".equals(vo.getBookPress())){
             wrapper.like("book_press",vo.getBookPress());
         }
-        if (vo.getStartTime()!=null){
+        if (vo.getStartTime()!=null&&!"".equals(vo.getStartTime())){
             wrapper.between("publish_time",vo.getStartTime(),vo.getEndTime());
         }
 
